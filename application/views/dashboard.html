@@ -1,0 +1,21 @@
+<div ng-init="vm.init();">
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<td><b>Username</b></td>
+					<td><b>Age</b></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in vm.users track by $index">
+					<td>{{user.username}}</td>
+					<td>{{user.age}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<button ng-click="vm.goTo('/add_user');">Add New User</button>
+	</div>
+</div>

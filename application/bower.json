@@ -1,0 +1,20 @@
+{
+  "name": "Bower Components",
+  "version": "1.0.0",
+  "authors": [
+    "Nilesh Mistry <nilesh.mistry@rapidops.com>"
+  ],
+  "description": "Common Bower Components",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "1.2.26",
+    "angular-mocks": "1.2.26",
+    "angular-route": "1.2.26"
+  }
+}
