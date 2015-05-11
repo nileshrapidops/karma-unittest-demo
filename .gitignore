@@ -1,0 +1,4 @@
+node_modules/*
+application/bower_components/*
+application/coverage/*
+npm-debug.log
