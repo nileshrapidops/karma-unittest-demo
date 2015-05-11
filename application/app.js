@@ -11,17 +11,17 @@
             .when('/', {
                 templateUrl: 'views/login.html',
                 controller: 'LoginController',
-                controllerAs: 'vm'
+                controllerAs: 'login'
             })
             .when('/dashboard', {
                 templateUrl: "views/dashboard.html",
                 controller: "DashboardController",
-                controllerAs: 'vm'
+                controllerAs: 'dashboard'
             })
             .when('/add_user', {
                 templateUrl: "views/add_user.html",
                 controller: "UserController",
-                controllerAs: 'vm'
+                controllerAs: 'addUser'
             })
             .otherwise({
                 redirectTo: '/'

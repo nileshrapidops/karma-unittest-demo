@@ -1,4 +1,4 @@
-<div ng-init="vm.init();">
+<div ng-init="dashboard.init();">
 	<div>
 		<table>
 			<thead>
@@ -8,7 +8,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="user in vm.users track by $index">
+				<tr ng-repeat="user in dashboard.users track by $index">
 					<td>{{user.username}}</td>
 					<td>{{user.age}}</td>
 				</tr>
@@ -16,6 +16,6 @@
 		</table>
 	</div>
 	<div>
-		<button ng-click="vm.goTo('/add_user');">Add New User</button>
+		<button ng-click="dashboard.goTo('/add_user');">Add New User</button>
 	</div>
 </div>
