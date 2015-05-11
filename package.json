@@ -1,5 +1,5 @@
 {
-  "name": "tresata-tap",
+  "name": "karma-unittest-demo",
   "description": "Sample Karma Test Application",
   "version": "1.0.0",
   "private": true,
