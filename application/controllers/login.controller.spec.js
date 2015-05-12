@@ -1,19 +1,16 @@
 
 describe("Login Controller Test", function(){
 
-    beforeEach(function(){
-        module('app')
-    });
-
     var controller;
 
     beforeEach(function(){
+        module('app');
         /*
          * you can inject the dependancy using $injector.get() method or directly
          */
         inject(function($controller){
             controller= $controller("LoginController");
-        })
+        });
     });
 
     it('should return "true" if username and password are valid', function(){

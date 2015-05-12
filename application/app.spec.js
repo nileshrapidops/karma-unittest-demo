@@ -1,14 +1,11 @@
 
 describe("Routes & Services Test", function(){
 
-    beforeEach(function(){
-        module('app');
-    });
-
     var route, userService, httpBackend;
 
     describe('Services Test', function(){
-        beforeEach(
+        beforeEach(function(){
+            module('app');
             /*
              * you can inject the dependancy using $injector.get() method or directly
              */
@@ -21,8 +18,8 @@ describe("Routes & Services Test", function(){
                         { "username": "nirav", "password": "nirav", "age": 26 }
                     ]
                 });
-            })
-        );
+            });
+        });
 
         afterEach(function(){
             /*
@@ -76,14 +73,15 @@ describe("Routes & Services Test", function(){
     });
 
     describe('Routes Test', function(){
-        beforeEach(
+        beforeEach(function(){
+            module('app');
             /*
              * you can inject the dependancy using $injector.get() method or directly
              */
             inject(function($route){
                 route = $route;
-            })
-        );
+            });
+        });
 
         it('Should Load The Login Page On Successful Load Of "/"', function() {
             assert.equal(route.routes['/'].controller, 'LoginController')

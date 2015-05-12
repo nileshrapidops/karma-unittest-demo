@@ -1,18 +1,15 @@
 
 describe("Dashboard Controller Test", function(){
 
-    beforeEach(function(){
-        module('app')
-    });
-
     var controller, httpBackend;
 
     beforeEach(function(){
+        module('app');
         /*
          * you can inject the dependancy using $injector.get() method or directly
          */
         inject(function($controller, $httpBackend){
-            controller= $controller("DashboardController");
+            controller = $controller("DashboardController");
             httpBackend = $httpBackend;
             httpBackend.when('GET', '../data/users.json').respond({
                 "Data": [
@@ -20,7 +17,7 @@ describe("Dashboard Controller Test", function(){
                     { "username": "nirav", "password": "nirav", "age": 26 }
                 ]
             });
-        })
+        });
     });
 
     afterEach(function(){
@@ -35,6 +32,9 @@ describe("Dashboard Controller Test", function(){
     });
 
     it('should not have user before activation', function(){
+        /*httpBackend.expectGET('/home').respond({
+            "status": "Success"
+        });*/
         assert.isUndefined(controller.users);
     });
 

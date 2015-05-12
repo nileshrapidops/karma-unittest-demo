@@ -1,20 +1,17 @@
 
 describe("User Controller Test", function(){
 
-    beforeEach(function(){
-        module('app')
-    });
-
     var controller, httpBackend;
 
     beforeEach(function(){
+        module('app');
         /*
          * you can inject the dependancy using $injector.get() method or directly
          */
         inject(function($controller, $httpBackend){
             controller= $controller("UserController");
             httpBackend = $httpBackend;
-        })
+        });
     });
 
     afterEach(function(){
