@@ -15,23 +15,23 @@ describe("Login Controller Test", function(){
 
     it('should return "true" if username and password are valid', function(){
         var isValidUser = controller.checkUser("nilesh", "nilesh");
-        assert.ok(isValidUser, 'should pass');
+        expect(isValidUser).to.be.true; // Asserts that the target is true.
     });
 
     it('should return "false" if username and password are invalid (nilesh, ashish)', function(){
         var isValidUser = controller.checkUser("nilesh", "ashish");
-        assert.notOk(isValidUser, 'should fail');
+        expect(isValidUser).to.be.false; // Asserts that the target is false.
     });
     it('should return "false" if username and password are blank', function(){
         var isValidUser = controller.checkUser();
-        assert.notOk(isValidUser, 'should fail');
+        expect(isValidUser).to.be.false; // Asserts that the target is false.
     });
     it('should return "false" if username and password are invalid (null, null)', function(){
         var isValidUser = controller.checkUser(null, null);
-        assert.notOk(isValidUser, 'should fail');
+        expect(isValidUser).to.be.false; // Asserts that the target is false.
     });
     it('should return "false" if username and password are invalid (" ", " ")', function(){
         var isValidUser = controller.checkUser(" ", " ");
-        assert.notOk(isValidUser, 'should fail');
+        expect(isValidUser).to.be.false; // Asserts that the target is false.
     });
 });

@@ -27,48 +27,46 @@ describe("User Controller Test", function(){
 
     it('should return "true" with valid user data', function(){
         var isValidData = controller.validateAddUserForm("nilesh", "nilesh", "nilesh", 25);
-        // Asserts that object is truthy.
-        assert.ok(isValidData, 'should pass');
+        expect(isValidData).to.be.true; // Asserts that the target is true.
     });
 
     it('should return "false" if username is blank', function(){
         var isValidData = controller.validateAddUserForm(undefined, "nilesh", "nilesh", 25);
-        // Asserts that object is falsy.
-        assert.notOk(isValidData, 'should fail');
+        expect(isValidData).to.be.false;
     });
 
     it('should return "false" if username is invalid " "', function(){
         var isValidData = controller.validateAddUserForm(" ", "nilesh", "nilesh", 25);
-        assert.notOk(isValidData, 'should fail');
+        expect(isValidData).to.be.false;
     });
 
     it('should return "false" if password is blank', function(){
         var isValidData = controller.validateAddUserForm("nilesh", undefined, "nilesh", 25);
-        assert.notOk(isValidData, 'should fail');
+        expect(isValidData).to.be.false;
     });
 
     it('should return "false" if password is invalid " "', function(){
         var isValidData = controller.validateAddUserForm("nilesh", " ", "nilesh", 25);
-        assert.notOk(isValidData, 'should fail');
+        expect(isValidData).to.be.false;
     });
 
     it('should return "false" if confirm password is blank', function(){
         var isValidData = controller.validateAddUserForm("nilesh", "nilesh", undefined, 25);
-        assert.notOk(isValidData, 'should fail');
+        expect(isValidData).to.be.false;
     });
 
     it('should return "false" if confirm password is invalid " "', function(){
         var isValidData = controller.validateAddUserForm("nilesh", "nilesh", " ", 25);
-        assert.notOk(isValidData, 'should fail');
+        expect(isValidData).to.be.false;
     });
 
     it('should return "false" if confirm age is blank', function(){
         var isValidData = controller.validateAddUserForm("nilesh", "nilesh", "nilesh", undefined);
-        assert.notOk(isValidData, 'should fail');
+        expect(isValidData).to.be.false;
     });
 
     it('should return "false" if confirm age is invalid " "', function(){
         var isValidData = controller.validateAddUserForm("nilesh", "nilesh", "nilesh", " ");
-        assert.notOk(isValidData, 'should fail');
+        expect(isValidData).to.be.false;
     });
 });

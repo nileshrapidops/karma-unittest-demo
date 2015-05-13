@@ -35,8 +35,7 @@ describe("Routes & Services Test", function(){
         it('should verify the response of "UserService" services', function(){
             userService.getUsers()
             .then(function(userData){
-                assert.isArray(userData.Data, 'userData.Data should be an Array');
-                assert.lengthOf(userData.Data, 2, 'array length should be 2');
+                expect(userData.Data).to.have.length(2);
             }, function(err){});
             /*
              * flush() method flushes the request that was sent to $http service.
@@ -62,7 +61,7 @@ describe("Routes & Services Test", function(){
             };
             userService.addUser(userObj)
             .then(function(data){
-                assert.equal(data.Status, 'success');
+                expect(data.Status).to.equal('success');
             }, function(err){});
             /*
              * flush() method flushes the request that was sent to $http service.
@@ -84,15 +83,15 @@ describe("Routes & Services Test", function(){
         });
 
         it('Should Load The Login Page On Successful Load Of "/"', function() {
-            assert.equal(route.routes['/'].controller, 'LoginController')
+            expect(route.routes['/'].controller).to.equal('LoginController');
         });
 
         it('Should Load The Dashboard Page On Successful Load Of "/dashboard"', function() {
-            assert.equal(route.routes['/dashboard'].controller, 'DashboardController');
+            expect(route.routes['/dashboard'].controller).to.equal('DashboardController');
         });
 
         it('Should Load The Add User Page On Successful Load Of "/add_user"', function() {
-            assert.equal(route.routes['/add_user'].controller, 'UserController')
+            expect(route.routes['/add_user'].controller).to.equal('UserController');
         });
     });
 });

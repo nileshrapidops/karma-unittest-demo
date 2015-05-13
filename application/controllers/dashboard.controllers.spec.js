@@ -35,7 +35,7 @@ describe("Dashboard Controller Test", function(){
         /*httpBackend.expectGET('/home').respond({
             "status": "Success"
         });*/
-        assert.isUndefined(controller.users);
+        expect(controller.users).to.be.undefined;
     });
 
     describe('After Activation', function(){
@@ -45,11 +45,11 @@ describe("Dashboard Controller Test", function(){
         });
 
         it('should have users', function(){
-            assert.isDefined(controller.users);
+            expect(controller.users).to.exist; // Asserts that the target is neither null nor undefined.
         });
 
         it('should have mock users', function(){
-            assert.lengthOf(controller.users, 2);
+            expect(controller.users).to.have.length(2);
         });
     });
 });
