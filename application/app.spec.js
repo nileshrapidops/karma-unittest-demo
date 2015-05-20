@@ -83,7 +83,7 @@ describe("Routes & Services Test", function(){
         });
 
         it('Should Load The Login Page On Successful Load Of "/"', function() {
-            expect(route.routes['/'].controller).to.equal('LoginController');
+            expect(route.routes['/'].controller).to.equal('LoginController123');
         });
 
         it('Should Load The Dashboard Page On Successful Load Of "/dashboard"', function() {
