@@ -5,18 +5,22 @@
         .controller('DashboardController', DashboardController);
     DashboardController.$inject = ['$location', 'userService'];
     function DashboardController($location, userService) {
-    	var vm = this;	
-    	vm.init = function(){
-			userService.getUsers()
-			.then(function(userData){
-				vm.users = userData.Data;
-			}, function(err){
-				console.log(err);
-			});
-		};
-		vm.goTo = function(path){
-			if(path)
-				$location.path(path);
-		}
+    	var vm = this;
+    	vm.users = [];
+		vm.goTo = goTo;
+		activate();
+
+        function activate() {
+            getUsers();
+        }
+        function getUsers() {
+            userService.getUsers().then(function(userData) {
+                vm.users = userData;
+            }, function(err){});
+        }
+        function goTo(path) {
+        	if(path)
+        		$location.path(path);
+        }
     }
 })();

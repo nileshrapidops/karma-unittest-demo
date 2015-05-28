@@ -1,55 +1,35 @@
 
 describe("Dashboard Controller Test", function(){
 
-    var controller, httpBackend;
+    var controller;
 
     beforeEach(function(){
-        module('app');
-        /*
-         * you can inject the dependancy using $injector.get() method or directly
-         */
-        inject(function($controller, $httpBackend){
-            controller = $controller("DashboardController");
-            httpBackend = $httpBackend;
-            httpBackend.when('GET', '../data/users.json').respond({
-                "Data": [
-                    { "username": "vimal", "password": "vimal", "age": 25 },
-                    { "username": "nirav", "password": "nirav", "age": 26 }
-                ]
-            });
+        module('app', function($provide) {
+            specHelper.fakeRouteProvider($provide);
         });
+        specHelper.injector(function($controller, $q, $rootScope, userService) {});
     });
 
-    afterEach(function(){
-        /*
-         * verifyNoOutstandingExpectation() is used to verify that all the request defined via
-         * "expect" api were made. If any one left than throws the exception
-         *
-         * verifyNoOutstandingRequest() is used to verify that no outstanding request need to be flushed.
-         */
-        httpBackend.verifyNoOutstandingExpectation();
-        httpBackend.verifyNoOutstandingRequest();
+    beforeEach(function () {
+        stubbing();
+        controller = $controller('DashboardController');
+        $rootScope.$apply();    
     });
 
     it('should not have user before activation', function(){
-        /*httpBackend.expectGET('/home').respond({
-            "status": "Success"
-        });*/
-        expect(controller.users).to.be.undefined;
+        expect(controller.users).to.be.defined;
     });
 
     describe('After Activation', function(){
-        beforeEach(function(){
-            controller.init();
-            httpBackend.flush();
-        });
-
-        it('should have users', function(){
-            expect(controller.users).to.exist; // Asserts that the target is neither null nor undefined.
-        });
-
         it('should have mock users', function(){
-            expect(controller.users).to.have.length(2);
+            expect(controller.users).to.have.length.above(0);
         });
     });
 });
+function stubbing() {
+    sinon.stub(userService, 'getUsers', function() {
+        var deferred = $q.defer();
+        deferred.resolve(mockData.getMockUsers());
+        return deferred.promise;
+    });
+}

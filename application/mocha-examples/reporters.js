@@ -2,11 +2,14 @@ var expect = require('chai').expect;
 require('mocha');
 
 describe('Reporters Test', function() {
-    it('Should be failed', function() {
-        expect("hello").to.equal("hi");
+    before(function(){
+        console.log("first describe block");
     });
     it('Should be passed', function() {
         expect("hello").to.equal("hello");
+    });
+    it('Should be failed', function() {
+        expect("hello").to.equal("hi");
     });
     it('Should be slow', function(done) {
         this.timeout(5000);

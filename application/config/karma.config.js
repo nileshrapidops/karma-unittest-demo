@@ -15,8 +15,10 @@ module.exports = function(config){
         // application and test specific files
         'app.module.js',
         'app.js',
-        'services/user.service.js',
+        'data/mock_data.js',
+        'data/spec_helper.js',
         'app.spec.js',
+        'services/*.js',
         'controllers/*.js'
     ],
 
@@ -42,7 +44,7 @@ module.exports = function(config){
     // if true, Karma captures browsers, runs the tests and exits
     singleRun : true,
 
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'chai', 'sinon'],
 
     browsers : ['PhantomJS'],
 
@@ -55,7 +57,8 @@ module.exports = function(config){
         // 'karma-jasmine',
         'karma-coverage',
         'karma-mocha',
-        'karma-chai'
+        'karma-chai',
+        'karma-sinon'
     ]
 
 })}

@@ -6,19 +6,20 @@
     LoginController.$inject = ['$location'];
     function LoginController($location) {
     	var vm = this;
-    	vm.login = function(){
-			var loginResult = vm.checkUser(vm.username, vm.password);
-			if(loginResult)
+    	vm.login = login;
+
+		function login() {
+			var isValid = checkUser(vm.username, vm.password);
+			if(isValid)
 				$location.path('/dashboard');
 			else
 				alert('Invalid username or password');
 		}
-		// this function checks that user is valid or not
-		vm.checkUser = function(username, password){
+		function checkUser(username, password) {
 			if(username == "nilesh" && password == "nilesh")
 				return true;
 			else
-				return false;	
+				return false;
 		}
     }
 })();
