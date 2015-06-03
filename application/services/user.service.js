@@ -15,12 +15,22 @@
         function getUsers() {
             var deferred=$q.defer();
             $http.get('../data/users.json').success(function(data){
-                deferred.resolve(data);
+                deferred.resolve(data.Data);
             }).error(function(data){
                 deferred.reject(data);
             });
             return deferred.promise;
         };
+
+        /*function getSpecificUser() {
+            var deferred=$q.defer();
+            $http.get('../data/user.json').success(function(data){
+                deferred.resolve(data.Data);
+            }).error(function(data){
+                deferred.reject(data);
+            });
+            return deferred.promise;
+        };*/
 
         function addUser(userObj) {
             var deferred=$q.defer();

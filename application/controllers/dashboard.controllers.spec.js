@@ -4,16 +4,16 @@ describe("Dashboard Controller Test", function(){
     var controller;
 
     beforeEach(function(){
-        module('app', function($provide) {
-            specHelper.fakeRouteProvider($provide);
-        });
-        specHelper.injector(function($controller, $q, $rootScope, userService) {});
+        module('app');
+        specHelper.injector(function($controller, $q, $rootScope, $httpBackend, userService) {});
     });
 
     beforeEach(function () {
-        stubbing();
+        // stubbing();
         controller = $controller('DashboardController');
-        $rootScope.$apply();    
+        // $rootScope.$apply();
+        userMock.injectMockData();
+        $httpBackend.flush();
     });
 
     it('should not have user before activation', function(){
@@ -25,11 +25,13 @@ describe("Dashboard Controller Test", function(){
             expect(controller.users).to.have.length.above(0);
         });
     });
+    specHelper.verifyNoOutstandingHttpRequests();
 });
-function stubbing() {
+
+/*function stubbing() {
     sinon.stub(userService, 'getUsers', function() {
         var deferred = $q.defer();
         deferred.resolve(mockData.getMockUsers());
         return deferred.promise;
     });
-}
+}*/

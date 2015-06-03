@@ -17,6 +17,7 @@ module.exports = function(config){
         'app.js',
         'data/mock_data.js',
         'data/spec_helper.js',
+        'data/user.mock.js',
         'app.spec.js',
         'services/*.js',
         'controllers/*.js'
@@ -46,19 +47,6 @@ module.exports = function(config){
 
     frameworks: ['mocha', 'chai', 'sinon'],
 
-    browsers : ['PhantomJS'],
-
-    plugins : [
-        // 'karma-chrome-launcher',
-        'karma-phantomjs-launcher',
-        'karma-mocha-reporter',
-        'karma-spec-reporter',
-        // 'karma-firefox-launcher',
-        // 'karma-jasmine',
-        'karma-coverage',
-        'karma-mocha',
-        'karma-chai',
-        'karma-sinon'
-    ]
+    browsers : ['PhantomJS']
 
 })}

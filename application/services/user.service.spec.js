@@ -1,17 +1,10 @@
 /* jshint -W117, -W030 */
 describe('User Services', function () {
-    var scope;
-    var mocks = {};
 
     beforeEach(function () {
-        module('app', function($provide) {
-            specHelper.fakeRouteProvider($provide);
-        });
+        module('app');
         specHelper.injector(function($httpBackend, $rootScope, userService) {});            
-        
-        mocks.users = { 
-            Data: mockData.getMockUsers()
-        };
+        userMock.injectMockData();
     });
 
     it('should be registered', function() {
@@ -24,9 +17,8 @@ describe('User Services', function () {
         });
         
         it('should return 5 Users', function () {
-            $httpBackend.when('GET', '../data/users.json').respond(200, mocks.users);
             userService.getUsers().then(function(data) {
-                expect(data.Data.length).to.equal(5);
+                expect(data.length).to.equal(5);
             });
             $httpBackend.flush();
         });
@@ -37,14 +29,6 @@ describe('User Services', function () {
         });
         
         it('should add user', function () {
-            $httpBackend.expectPOST('/user', {
-                "username": "nilesh",
-                "password": "nilesh",
-                "age": 25
-            }).respond({
-                "Status": "success",
-                "Data": {}
-            });
             var userObj = {
                 "username": "nilesh",
                 "password": "nilesh",

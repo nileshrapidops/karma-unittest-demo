@@ -16,7 +16,10 @@
         function getUsers() {
             userService.getUsers().then(function(userData) {
                 vm.users = userData;
-            }, function(err){});
+            }, function(err){
+                console.log(err);
+                console.log("err");
+            });
         }
         function goTo(path) {
         	if(path)
