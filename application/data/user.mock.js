@@ -3,7 +3,8 @@
  */
 var userMock = (function() {
     var service = {
-        injectMockData: injectMockData
+        injectMockData: injectMockData,
+        injectBlankMockData: injectBlankMockData
     };
     return service;
     
@@ -21,6 +22,13 @@ var userMock = (function() {
             "Status": "success",
             "Data": {}
         });
+    }
+
+    function injectBlankMockData() {
+        // success response
+        $httpBackend
+        .when('GET', '../data/users.json')
+        .respond(200, getBlankUsers());
     }
 
     function getMockUsers() {
@@ -49,6 +57,12 @@ var userMock = (function() {
                     "age" : 30
                 }
             ] 
+        }
+    }
+    function getBlankUsers() {
+        return {
+            "Status": "success",
+            "Data" : [] 
         }
     }
     function getErrorMock() {
